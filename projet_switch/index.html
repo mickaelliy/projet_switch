@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index.html</title>
+	<!-- CDN bootstrap sur google -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	#formulaire-eval{
+		display: none;
+	}
+
+	.form-check-label i:hover{
+		color:yellow;
+	}
+</style>
+</head>
+<body>
+	<!-- http://localhost/api/8-rating -->
+	<div class="container">
+		<div class="row">
+			<h1>Titre principale de l'article</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut commodi doloribus culpa asperiores nisi deserunt fugiat corporis necessitatibus possimus sint! Nihil nostrum dolores doloribus aspernatur, nisi, optio dolore itaque, similique voluptatum quod vero iste, tenetur mollitia commodi corrupti quam officiis. Culpa sequi nemo, reprehenderit nesciunt cumque velit. Fuga enim consequuntur cum, commodi! Molestiae nobis facere nesciunt atque ex beatae consectetur.</p>
+		</div>
+		<hr>
+		<div class="row">
+			<h2>Laisser une note</h2>
+		</div>
+		<div class="row">
+			<button type="button" class="btn btn-primary" id="show-form">Primary</button>
+		</div>
+		<div class="row" id="formulaire-eval" data-visible="0">
+			<form>
+
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="mauvais" checked>
+						<label class="form-check-label" for="exampleRadios1">
+
+							<i class="fa fa-star" aria-hidden="true"></i>
+
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="moyen">
+						<label class="form-check-label" for="exampleRadios2">
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="bon">
+						<label class="form-check-label" for="exampleRadios3">
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+
+						</label>
+					</div>
+
+
+				<!-- toutes les notes saisies sont pour l'article n°4  -->
+				<input type="hidden" name="id_article" value="4" id="id_article">
+				<button type="submit" class="btn btn-primary" id="send-rating">Submit</button>
+			</form>
+		</div>
+	</div>
+	<!-- div qui contient mon formulaire par défaut, elle est masquée via du css -->
+	<!-- avec javascript clique une fois affiche clique une autre fois masquer -->
+	<script>
+		function $(el){
+			return document.getElementById(el);
+		}
+
+		var btnShowForm = $("show-form");
+
+		btnShowForm.addEventListener("click",function(){
+			var data = $("formulaire-eval").dataset.visible ;
+			if(data == 0){
+				$("formulaire-eval").style['display']="block";
+				$("formulaire-eval").dataset.visible = 1;
+			}else{
+				$("formulaire-eval").style['display']="none";
+				$("formulaire-eval").dataset.visible = 0;
+			}
+		});
+
+		$("send-rating").addEventListener('click',function(e){
+			e.preventDefault();
+
+			var q = new XMLHttpRequest();
+
+			q.open("POST","data.php");
+
+			q.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+			q.onload = function(){
+				var info = q.responseText;
+				console.log(info);
+			}
+
+			var v = document.querySelector('input[name="exampleRadios"]:checked').value;
+			var reponse = "rating="+v+"&id_article="+$("id_article").value;
+
+			console.log(reponse);
+			q.send(reponse);
+
+		});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/**
+  * SUMMARY
+  * $GENERAL
+  * $COLOR
+  * $INDEX
+  *
+
+*/
+
+
+.table-responsive {
+  
+  height: 400px;
+}
+
+.h6{
+  color:green;
+}
+
+
+
+/************** RWD *****************************/
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}

@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns:og="http://ogp.me/ns#">
+<head ng-controller="HeadCtrl as ctrl">
+    <title ng-bind="ctrl.title"></title>
+    <!-- inject:css -->
+    <!-- endinject -->
+    <link rel="stylesheet" type="text/css" href="/dist/css/styles.css?rev=79194eb9d637e11a37784c4f4624627a" >
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/themes/offline-theme-chrome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/themes/offline-language-english.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <link ng-href="{{link.url}}" rel="alternate" hreflang="{{link.locale}}" ng-repeat="link in ctrl.localeLinks" >
+    <link ng-href="{{link.url}}" rel="{{link.rel}}" ng-repeat="link in ctrl.links" >
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ce3268">
+    <meta name="{{metaKey}}" content="{{metaValue}}" ng-repeat="(metaKey, metaValue) in ctrl.meta" >
+    <meta charset="utf-8">
+    <meta name="fragment" content="!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta  property="og:{{ogKey}}"  content="{{ogValue}}" ng-repeat="(ogKey, ogValue) in ctrl.openGraph" >
+    <base href="/">
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P5WG9H');
+    </script>
+
+    <!-- End Google Tag Manager -->
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (e, n, t, o, s, a, c) {
+            e.fbq || (s = e.fbq = function () {
+                s.callMethod ? s.callMethod.apply(s, arguments) : s.queue.push(arguments)
+            }, e._fbq || (e._fbq = s), s.push = s, s.loaded = !0, s.version = "2.0", s.queue = [], a = n.createElement(t), a.async = !0, a.src = o, c = n.getElementsByTagName(t)[0], c.parentNode.insertBefore(a, c))
+        }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq('init', '128104927796644');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=128104927796644&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+
+</head>
+
+<body ng-class="{'mobile-menu-open': mobileMenuOpen, 'touch-screen': touchScreen, 'no-touch-screen': !touchScreen}" itemscope itemtype="http://schema.org/WebPage">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5WG9H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <cw-mobile-menu></cw-mobile-menu>
+    <div class="wrapper">
+        <cw-nav-bar></cw-nav-bar>
+        <cw-header></cw-header>
+        <main class="content container" ui-view ui-view-loader autoscroll="false">
+        </main>
+        <cw-footer></cw-footer>
+    </div>
+    <!-- inject:js -->
+    <!-- endinject -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDwDPC4-0R3nVTKYst7ZzOEX2x5iZc4FkU"></script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js" charset="utf-8"></script>
+    <script src="/dist/app.js?rev=395dfa0e1be731fa0c28150d87e574a0" type="text/javascript"></script>
+    <script type="text/javascript"> _linkedin_data_partner_id = "388778"; </script><script type="text/javascript"> (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(); </script> <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=388778&fmt=gif" /> </noscript>
+</body>
+</html>
